@@ -52,20 +52,17 @@ long long mergeAndCountInversions(vector<int>&a, vector<int>&b, vector<int> &d)
                 count += isweepb;
                 d[id++] = a[ia++];
             }
-            count -= isweepb; //Do not count edge twice
-            //First pair was already accounted for in regular counter
             break;
         }
         if (a[ia] <= b[ib]) {
             d[id++] = a[ia++];
-            isweepb = 0;
+                count += isweepb;
         }
         else {
 #if defined TEST1
             std::cout << "regular count (" << a[ia] << ", " << b[ib] << ")" << std::endl;
 #endif
             d[id++] = b[ib++];
-            count++;
             isweepb++;
         }
     }
