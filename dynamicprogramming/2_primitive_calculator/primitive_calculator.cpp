@@ -63,6 +63,37 @@ vector<int> optimal_sequence_dp(int n) {
         bool isDiv3 = n % 3 == 0;
         bool isDiv2 = n % 2 == 0;
         int nm1 = n - 1;
+//#if 0
+        if (isDiv3) {
+            if (isDiv2) {
+                if (oper[n / 3] < oper[n / 2]) {
+                    if (oper[n / 3] < oper[nm1])
+                        n = n / 3;
+                    else
+                        n = nm1;
+                }
+                else if (oper[n / 2] < oper[nm1])
+                    n = n / 2;
+                else
+                    n = nm1;
+            }
+            else {
+                if (oper[n / 3] < oper[nm1])
+                    n = n / 3;
+                else
+                    n = nm1;
+            }
+        }
+        else if (isDiv2) {
+            if (oper[n / 2] < oper[nm1])
+                n = n / 2;
+            else
+                n = nm1;
+    }
+        else
+            n = nm1;
+//#endif
+#if 0
         if (!isDiv3 && !isDiv2) {
             n = nm1;
         }
@@ -84,6 +115,7 @@ vector<int> optimal_sequence_dp(int n) {
             else
                 n = n / 3;
         }
+#endif
     }
     reverse(sequence.begin(), sequence.end());
     return sequence;
